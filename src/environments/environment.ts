@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrls: {
+    STATIONS: 'https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/stations',
+    DEPARTURES: 'https://gateway.apiportal.ns.nl/reisinformatie-api/api/v2/departures'
+  },
+  nsSubscription: {
+    key: 'Ocp-Apim-Subscription-KeyXXX',
+    value: '9501613007cd41398976a63b0a5bd925'
+  }
 };
 
 /*
