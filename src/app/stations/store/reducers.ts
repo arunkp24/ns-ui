@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { StatiosStateInterface } from '../types/stationsState.interface';
+import { StationsStateInterface } from '../types/stationsState.interface';
 import * as StationsActions from './actions';
 
-export const initialState: StatiosStateInterface = {
+export const initialState: StationsStateInterface = {
     isLoading: false,
     stations: [],
     error: null

@@ -1,7 +1,7 @@
 import { StationInterface } from './station.interface';
 import { StationErrorInterface } from './stationError.interface';
 
-export interface StatiosStateInterface {
+export interface StationsStateInterface {
     isLoading: boolean;
     stations: StationInterface[];
     error: StationErrorInterface | null;
