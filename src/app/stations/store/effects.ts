@@ -14,7 +14,7 @@ export class StationsEffects {
             mergeMap(() => {
                 return this.stationService.getStations().pipe(
                     map((stations) => StationsActions.getStationsSuccess({stations})),
-                    catchError((error) => of(StationsActions.getStationsFailure({error})))
+                    catchError((error) => of(StationsActions.getStationsFailure({error: error.error})))
                 );
             })
         )
