@@ -6,6 +6,7 @@ import { DepartureService } from './services/departures.service';
 import { DeparturesRoutingModule } from './departures-routing.module';
 import { DeparturesEffects } from './store/effects';
 import { reducers } from './store/reducers';
+import { DeparturesComponent } from './components/departures.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,7 @@ import { reducers } from './store/reducers';
         EffectsModule.forFeature([DeparturesEffects])
     ],
     providers: [DepartureService],
-    declarations: [],
+    declarations: [DeparturesComponent],
     exports: []
 })
 export class DeparturesModule {

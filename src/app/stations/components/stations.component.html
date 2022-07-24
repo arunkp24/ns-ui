@@ -1,3 +1,18 @@
-<p>it works</p>
-
-<button (click)="goToDepartures()">Departures</button>
+<div class="container">
+    <mat-card *ngIf="!(error$ | async)">
+        <form>
+            <mat-form-field>
+                <mat-label>Search for stations here ...</mat-label>
+                <input type="text" matInput [formControl]="formControl" [matAutocomplete]="auto">
+                <mat-error *ngIf="showErrorMessage">Please select a station</mat-error>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayStationName">
+                    <mat-option *ngFor="let station of filteredStations$ | async" [value]="station">
+                        {{ station.name }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button type="button" mat-raised-button color="primary" (click)="getDepartures()">Get Departures</button>
+        </form>
+    </mat-card>
+    <app-error *ngIf="error$ | async" [error]="(error$ | async)"></app-error>
+</div>

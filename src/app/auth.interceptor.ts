@@ -14,11 +14,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
   private cache = new Map<string, HttpResponse<any>>();
 
-  constructor() {}
+  constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
     const authHeaders = request.headers.set(environment.nsSubscription.key, environment.nsSubscription.value);
-    const newRequest = request.clone({headers: authHeaders});
+    const newRequest = request.clone({ headers: authHeaders });
+
     if (newRequest.method !== 'GET') {
       return next.handle(newRequest);
     }
@@ -26,14 +28,14 @@ export class AuthInterceptor implements HttpInterceptor {
     const cachedResponse = this.cache.get(newRequest.url);
     if (cachedResponse) {
       return of(cachedResponse);
-    } else {
-      return next.handle(newRequest).pipe(
-        tap(event => {
-          if (event instanceof HttpResponse) {
-            this.cache.set(newRequest.url, event);
-          }
-        })
-      );
     }
+
+    return next.handle(newRequest).pipe(
+      tap(event => {
+        if (event instanceof HttpResponse) {
+          this.cache.set(newRequest.url, event);
+        }
+      })
+    );
   }
 }
