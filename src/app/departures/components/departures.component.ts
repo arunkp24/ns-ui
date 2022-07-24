@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +16,7 @@ import { DepartureErrorInterface } from '../types/departureError.interface';
     templateUrl: './departures.component.html',
     styleUrls: ['./departures.component.scss']
 })
-export class DeparturesComponent implements OnInit, OnDestroy{
+export class DeparturesComponent implements OnInit, OnDestroy, AfterViewInit{
 
     error$: Observable<DepartureErrorInterface | null>;
     subscriptions: Subscription = new Subscription();

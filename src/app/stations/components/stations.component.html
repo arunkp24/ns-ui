@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card *ngIf="!(error$ | async)">
+    <mat-card *ngIf="(error$ | async) === null">
         <form>
             <mat-form-field>
                 <mat-label>Search for stations here ...</mat-label>

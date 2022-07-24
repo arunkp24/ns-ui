@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="departure-wrapper" *ngIf="!(error$ | async)">
+    <div class="departure-wrapper" *ngIf="(error$ | async) === null">
         <div class="search-filter-wrapper">
             <mat-form-field>
                 <mat-label>Search...</mat-label>
@@ -50,5 +50,5 @@
         </div>
         <button type="button" mat-raised-button color="primary" (click)="goBack()">Back</button>
     </div>
-    <app-error *ngIf="error$ | async" [error]="(error$ | async)" [showBackButton]="true"></app-error>
+    <app-error *ngIf="(error$ | async)" [error]="(error$ | async)" [showBackButton]="true"></app-error>
 </div>
