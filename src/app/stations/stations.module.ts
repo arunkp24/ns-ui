@@ -12,6 +12,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 @NgModule({
@@ -26,6 +27,7 @@ import { SharedModule } from '../shared/shared.module';
         MatFormFieldModule,
         MatInputModule,
         MatAutocompleteModule,
+        MatProgressSpinnerModule,
         StoreModule.forFeature('stations', reducers),
         EffectsModule.forFeature([StationsEffects])
     ],

@@ -1,6 +1,7 @@
 <div class="container">
     <mat-card *ngIf="(error$ | async) === null">
-        <form>
+        <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+        <form *ngIf="(isLoading$ | async) === false">
             <mat-form-field>
                 <mat-label>Search for stations here ...</mat-label>
                 <input type="text" matInput [formControl]="formControl" [matAutocomplete]="auto">

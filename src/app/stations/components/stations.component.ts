@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
-import { errorSelector, stationsSelector } from '../store/selectors';
+import { errorSelector, isLoadingSelector, stationsSelector } from '../store/selectors';
 import { StationInterface } from '../types/station.interface';
 import { StationErrorInterface } from '../types/stationError.interface';
 import * as StationsActions from './../store/actions';
@@ -20,6 +20,7 @@ export class StationsComponent implements OnInit, OnDestroy {
     filteredStations$!: Observable<StationInterface[]>;
     stations$: Observable<StationInterface[]>;
     error$: Observable<StationErrorInterface | null>;
+    isLoading$: Observable<Boolean>;
     subscription!: Subscription;
     showErrorMessage: Boolean = false;
 
@@ -28,6 +29,7 @@ export class StationsComponent implements OnInit, OnDestroy {
     constructor(private store: Store<AppStateInterface>, private router: Router) {
         this.stations$ = this.store.pipe(select(stationsSelector))
         this.error$ = this.store.pipe(select(errorSelector));
+        this.isLoading$ = this.store.pipe(select(isLoadingSelector));
 
         this.subscription = this.stations$.subscribe(stations => {
             this.stations = stations;

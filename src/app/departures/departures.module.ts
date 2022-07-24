@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -26,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
         MatSelectModule,
         MatFormFieldModule,
         MatInputModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
         SharedModule,
         StoreModule.forFeature('departures', reducers),
         EffectsModule.forFeature([DeparturesEffects])

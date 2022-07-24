@@ -1,6 +1,9 @@
 <div class="container">
 
-    <div class="departure-wrapper" *ngIf="(error$ | async) === null">
+    <mat-card *ngIf="isLoading$ | async">
+        <mat-spinner></mat-spinner>
+    </mat-card>
+    <div class="departure-wrapper" *ngIf="(error$ | async) === null && (isLoading$ | async) === false">
         <div class="search-filter-wrapper">
             <mat-form-field>
                 <mat-label>Search...</mat-label>

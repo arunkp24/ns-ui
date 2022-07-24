@@ -6,6 +6,10 @@
     button {
         margin: 1rem 0;
     }
+    mat-card {
+        display: flex;
+        justify-content: center;
+    }
     .departure-wrapper {
         .search-filter-wrapper {
             display: flex;

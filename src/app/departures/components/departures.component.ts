@@ -7,7 +7,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as DeparturesActions from '../store/actions';
-import { departuresSelector, errorSelector } from '../store/selectors';
+import { departuresSelector, errorSelector, isLoadingSelector } from '../store/selectors';
 import { DepartureInterface } from '../types/departure.interface';
 import { DepartureErrorInterface } from '../types/departureError.interface';
 
@@ -19,10 +19,12 @@ import { DepartureErrorInterface } from '../types/departureError.interface';
 export class DeparturesComponent implements OnInit, OnDestroy, AfterViewInit{
 
     error$: Observable<DepartureErrorInterface | null>;
-    subscriptions: Subscription = new Subscription();
-    station: string = '';
     departures$: Observable<DepartureInterface[]>;
+    isLoading$: Observable<Boolean>;
+
+    subscriptions: Subscription = new Subscription();
     departures: DepartureInterface[] = [];
+    station: string = '';
     displayedColumns: string[] = ['time', 'direction', 'track', 'type'];
 
     dataSource = new MatTableDataSource<DepartureInterface>;
@@ -31,6 +33,7 @@ export class DeparturesComponent implements OnInit, OnDestroy, AfterViewInit{
     constructor(private store: Store<AppStateInterface>, private route: ActivatedRoute, private location: Location) {
         this.departures$ = this.store.pipe(select(departuresSelector));
         this.error$ = this.store.pipe(select(errorSelector));
+        this.isLoading$ = this.store.pipe(select(isLoadingSelector));
 
         this.subscriptions.add(route.queryParams.subscribe(params => this.station = params['station']));
         this.subscriptions.add(this.departures$.subscribe(departures => {
