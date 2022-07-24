@@ -11,7 +11,7 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <button type="button" mat-raised-button color="primary" (click)="getDepartures()">Get Departures</button>
+            <button type="button" mat-raised-button color="primary" (click)="gotToDepartures()">Get Departures</button>
         </form>
     </mat-card>
     <app-error *ngIf="error$ | async" [error]="(error$ | async)"></app-error>

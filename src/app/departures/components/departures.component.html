@@ -1,1 +1,54 @@
-<p>it works</p>
+<div class="container">
+
+    <div class="departure-wrapper" *ngIf="!(error$ | async)">
+        <div class="search-filter-wrapper">
+            <mat-form-field>
+                <mat-label>Search...</mat-label>
+                <input matInput (keyup)="searchDepartures(input.value)" placeholder="Departure station..." #input autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Filter by:</mat-label>
+                <mat-select (selectionChange)="filterDepartures($event.value)">
+                    <mat-option>None</mat-option>
+                    <mat-option value="sprinter">Sprinter</mat-option>
+                    <mat-option value="intercity">Intercity</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef> Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time | date: 'dd/MM/yyyy h:mm a'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="direction">
+                    <th mat-header-cell *matHeaderCellDef> Direction </th>
+                    <td mat-cell *matCellDef="let element"> {{element.direction}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="track">
+                    <th mat-header-cell *matHeaderCellDef> Track </th>
+                    <td mat-cell *matCellDef="let element"> {{element.track}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of departure trains">
+            </mat-paginator>
+        </div>
+        <button type="button" mat-raised-button color="primary" (click)="goBack()">Back</button>
+    </div>
+    <app-error *ngIf="error$ | async" [error]="(error$ | async)" [showBackButton]="true"></app-error>
+</div>

@@ -7,15 +7,30 @@ import { DeparturesRoutingModule } from './departures-routing.module';
 import { DeparturesEffects } from './store/effects';
 import { reducers } from './store/reducers';
 import { DeparturesComponent } from './components/departures.component';
+import { RouteGuard } from './services/route-guard.service';
+import { SharedModule } from '../shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports: [
         CommonModule,
         DeparturesRoutingModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        SharedModule,
         StoreModule.forFeature('departures', reducers),
         EffectsModule.forFeature([DeparturesEffects])
     ],
-    providers: [DepartureService],
+    providers: [DepartureService, RouteGuard],
     declarations: [DeparturesComponent],
     exports: []
 })

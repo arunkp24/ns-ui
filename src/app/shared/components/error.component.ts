@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ErrorInterface } from '../types/error.interface';
 
@@ -6,8 +7,15 @@ import { ErrorInterface } from '../types/error.interface';
     templateUrl: './error.component.html',
     styleUrls: ['./error.component.scss']
 })
-export class ErrorComponent {
+export class ErrorComponent{
 
-    @Input() error!: {statusCode: number, message: string} | null;
+    constructor(private location: Location) {}
+
+    @Input() error!: ErrorInterface | null;
+    @Input() showBackButton: Boolean = false;
+
+    goBack(): void {
+        this.location.back();
+    }
 
 }

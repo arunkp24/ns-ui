@@ -54,7 +54,7 @@ export class StationsComponent implements OnInit, OnDestroy {
         return this.stations.filter(station => station.name.toLowerCase().includes(filterValue));
     }
 
-    getDepartures() {
+    gotToDepartures() {
         const selectedStation = typeof this.formControl.value === 'string' ? null : this.formControl.value
         if (!selectedStation) {
             this.formControl.setValue('');

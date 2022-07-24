@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const authHeaders = request.headers.set(environment.nsSubscription.key, environment.nsSubscription.value);
     const newRequest = request.clone({ headers: authHeaders });
 
-    if (newRequest.method !== 'GET') {
+    if (newRequest.method !== 'GET' || newRequest.headers.get('skip')) {
       return next.handle(newRequest);
     }
 

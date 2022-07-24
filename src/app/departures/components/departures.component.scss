@@ -1,0 +1,15 @@
+.container {
+    margin: 5rem 10rem;
+    table {
+        width: 100%;
+    }
+    button {
+        margin: 1rem 0;
+    }
+    .departure-wrapper {
+        .search-filter-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }    
+    }
+}
