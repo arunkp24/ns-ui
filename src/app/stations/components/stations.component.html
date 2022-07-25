@@ -4,7 +4,7 @@
         <form *ngIf="(isLoading$ | async) === false">
             <mat-form-field>
                 <mat-label>Search for stations here ...</mat-label>
-                <input type="text" matInput [formControl]="formControl" [matAutocomplete]="auto">
+                <input type="text" id="searchStationInput" matInput [formControl]="formControl" [matAutocomplete]="auto">
                 <mat-error *ngIf="showErrorMessage">Please select a station</mat-error>
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayStationName">
                     <mat-option *ngFor="let station of filteredStations$ | async" [value]="station">
@@ -12,7 +12,7 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <button type="button" mat-raised-button color="primary" (click)="gotToDepartures()">Get Departures</button>
+            <button type="button" id="getDeparturesBtn" mat-raised-button color="primary" (click)="gotToDepartures()">Get Departures</button>
         </form>
     </mat-card>
     <app-error *ngIf="error$ | async" [error]="(error$ | async)"></app-error>

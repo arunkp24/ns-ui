@@ -1,0 +1,163 @@
+{
+    "payload": {
+        "source": "PPV",
+        "departures": [
+            {
+                "direction": "Gouda Goverwelle",
+                "name": "NS  6995",
+                "plannedDateTime": "2022-07-26T00:13:00+0200",
+                "plannedTimeZoneOffset": 120,
+                "actualDateTime": "2022-07-26T00:13:00+0200",
+                "actualTimeZoneOffset": 120,
+                "plannedTrack": "6",
+                "product": {
+                    "number": "6995",
+                    "categoryCode": "SPR",
+                    "shortCategoryName": "NS Sprinter",
+                    "longCategoryName": "Sprinter",
+                    "operatorCode": "NS",
+                    "operatorName": "NS",
+                    "type": "TRAIN"
+                },
+                "trainCategory": "SPR",
+                "cancelled": false,
+                "routeStations": [
+                    {
+                        "uicCode": "8400658",
+                        "mediumName": "Voorburg"
+                    },
+                    {
+                        "uicCode": "8400379",
+                        "mediumName": "Ypenburg"
+                    },
+                    {
+                        "uicCode": "8400741",
+                        "mediumName": "Zoetermeer"
+                    },
+                    {
+                        "uicCode": "8400258",
+                        "mediumName": "Gouda"
+                    }
+                ],
+                "messages": [],
+                "departureStatus": "ON_STATION"
+            },
+            {
+                "direction": "Haarlem",
+                "name": "NS  6380",
+                "plannedDateTime": "2022-07-26T00:22:00+0200",
+                "plannedTimeZoneOffset": 120,
+                "actualDateTime": "2022-07-26T00:22:00+0200",
+                "actualTimeZoneOffset": 120,
+                "plannedTrack": "6",
+                "product": {
+                    "number": "6380",
+                    "categoryCode": "SPR",
+                    "shortCategoryName": "NS Sprinter",
+                    "longCategoryName": "Sprinter",
+                    "operatorCode": "NS",
+                    "operatorName": "NS",
+                    "type": "TRAIN"
+                },
+                "trainCategory": "SPR",
+                "cancelled": false,
+                "routeStations": [
+                    {
+                        "uicCode": "8400380",
+                        "mediumName": "Laan v NOI"
+                    },
+                    {
+                        "uicCode": "8400278",
+                        "mediumName": "Mariahoeve"
+                    },
+                    {
+                        "uicCode": "8400659",
+                        "mediumName": "Voorschoten"
+                    },
+                    {
+                        "uicCode": "8400390",
+                        "mediumName": "Leiden C."
+                    }
+                ],
+                "messages": [],
+                "departureStatus": "INCOMING"
+            },
+            {
+                "direction": "Dordrecht",
+                "name": "NS  5195",
+                "plannedDateTime": "2022-07-26T00:24:00+0200",
+                "plannedTimeZoneOffset": 120,
+                "actualDateTime": "2022-07-26T00:24:00+0200",
+                "actualTimeZoneOffset": 120,
+                "plannedTrack": "3",
+                "product": {
+                    "number": "5195",
+                    "categoryCode": "SPR",
+                    "shortCategoryName": "NS Sprinter",
+                    "longCategoryName": "Sprinter",
+                    "operatorCode": "NS",
+                    "operatorName": "NS",
+                    "type": "TRAIN"
+                },
+                "trainCategory": "SPR",
+                "cancelled": false,
+                "routeStations": [
+                    {
+                        "uicCode": "8400280",
+                        "mediumName": "Den Haag HS"
+                    },
+                    {
+                        "uicCode": "8400279",
+                        "mediumName": "Moerwijk"
+                    },
+                    {
+                        "uicCode": "8400170",
+                        "mediumName": "Delft"
+                    },
+                    {
+                        "uicCode": "8400530",
+                        "mediumName": "Rotterdam C."
+                    }
+                ],
+                "messages": [],
+                "departureStatus": "ON_STATION"
+            },
+            {
+                "direction": "Schiphol Airport",
+                "name": "NS   793",
+                "plannedDateTime": "2022-07-26T00:33:00+0200",
+                "plannedTimeZoneOffset": 120,
+                "actualDateTime": "2022-07-26T00:33:00+0200",
+                "actualTimeZoneOffset": 120,
+                "plannedTrack": "8",
+                "product": {
+                    "number": "793",
+                    "categoryCode": "IC",
+                    "shortCategoryName": "NS Intercity",
+                    "longCategoryName": "Intercity",
+                    "operatorCode": "NS",
+                    "operatorName": "NS",
+                    "type": "TRAIN"
+                },
+                "trainCategory": "IC",
+                "cancelled": false,
+                "routeStations": [
+                    {
+                        "uicCode": "8400390",
+                        "mediumName": "Leiden C."
+                    }
+                ],
+                "messages": [],
+                "departureStatus": "ON_STATION"
+            }
+        ]
+    },
+    "links": {
+        "disruptions": {
+            "uri": "/api/v2/disruptions?station=GVC"
+        }
+    },
+    "meta": {
+        "numberOfDisruptions": 3
+    }
+}

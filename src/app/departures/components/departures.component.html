@@ -7,7 +7,7 @@
         <div class="search-filter-wrapper">
             <mat-form-field>
                 <mat-label>Search...</mat-label>
-                <input matInput (keyup)="searchDepartures(input.value)" placeholder="Departure station..." #input autocomplete="off">
+                <input matInput id="searchDeparturesInput" (keyup)="searchDepartures(input.value)" placeholder="Departure station..." #input autocomplete="off">
             </mat-form-field>
 
             <mat-form-field>
@@ -51,7 +51,7 @@
                 aria-label="Select page of departure trains">
             </mat-paginator>
         </div>
-        <button type="button" mat-raised-button color="primary" (click)="goBack()">Back</button>
+        <button type="button" id="backBtn" mat-raised-button color="primary" (click)="goBack()">Back</button>
     </div>
     <app-error *ngIf="(error$ | async)" [error]="(error$ | async)" [showBackButton]="true"></app-error>
 </div>
