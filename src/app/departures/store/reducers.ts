@@ -1,4 +1,3 @@
-import { act } from '@ngrx/effects';
 import { createReducer, on } from '@ngrx/store';
 import { DepartureStateInterface } from '../types/departuresState.interface';
 import * as DeparturesActions from './actions';
