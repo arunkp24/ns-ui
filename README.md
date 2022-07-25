@@ -36,6 +36,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 10. Interfaces
 11. Routing
 12. Components
-13. Jest Unit Testing (ToDo)
+13. Jest Unit Testing
 14. Cypress End-to-End Testing (ToDo)
 15. Eslint
