@@ -57,7 +57,7 @@ export class DeparturesComponent implements OnInit, OnDestroy, AfterViewInit{
         this.dataSource.data = trainType ? this.departures.filter(departure => departure.category.toLowerCase() === trainType?.toLowerCase()) : this.departures;
     }
 
-    searchDepartures(searchTerm: string) {
+    searchDepartures(searchTerm: string): void {
         this.dataSource.filter = searchTerm;
     }
 

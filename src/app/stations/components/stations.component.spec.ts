@@ -10,13 +10,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { StationService } from '../services/stations.service';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Router } from '@angular/router';
 
 describe('StationsComponent', () => {
   let component: StationsComponent;
   let fixture: ComponentFixture<StationsComponent>;
+  let store: MockStore;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -43,10 +45,36 @@ describe('StationsComponent', () => {
     fixture = TestBed.createComponent(StationsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    store = TestBed.inject(MockStore);
+    store.dispatch = jest.fn();
+    router = TestBed.inject(Router);
+    router.navigate = jest.fn();
   })
 
   test('should create the app', () => {
     expect(component).toBeTruthy();
+  });
+
+  test('should dispatch getStations action', (done) => {
+    const expectedAction = { type: '[Stations] Get Stations' };
+    store.scannedActions$.subscribe(scannedAction => {
+      expect(scannedAction).toEqual(expectedAction);
+      done();
+    })
+  });
+
+  test('should set error message', () => {
+    component.formControl.setValue('abc');
+    component.gotToDepartures();
+    expect(component.formControl.value).toBe('');
+    expect(component.showErrorMessage).toBe(true);
+  });
+
+  test('should naigate to departures page', () => {
+    component.formControl.setValue({code: 'GVC', name: 'Den Haag'});
+    component.gotToDepartures();
+    expect(router.navigate).toHaveBeenCalledWith(['/departures'], { queryParams: { station: 'GVC' } });
   });
 
 });

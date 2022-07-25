@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { hot, cold } from 'jest-marbles';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { DepartureService } from '../services/departures.service';
 import { DepartureInterface } from '../types/departure.interface';
 import { DepartureStateInterface } from '../types/departuresState.interface';
@@ -45,5 +46,22 @@ describe('Departures Effects', () => {
         const expected = cold('-b', {b: completion});
 
         expect(effects.getDepartures$).toBeObservable(expected);
+    });
+
+    test('should dispatch getDeparturesFailure', () => {
+        const errorResponse = new HttpErrorResponse({
+            error: { message: '', code: 400 },
+            status: 400,
+            statusText: 'Bad Request',
+        });
+        service.getDepartures = jest.fn().mockReturnValue(throwError(errorResponse));
+
+        const action = DeparturesActions.getDepartures({ station: 'GVC' });
+        actions = hot('-a', { a: action });
+        const completion = DeparturesActions.getDeparturesFailure({ error: { message: '', statusCode: 400 } });
+        const expected = cold('-b', { b: completion });
+
+        expect(effects.getDepartures$).toBeObservable(expected);
+
     });
 });
