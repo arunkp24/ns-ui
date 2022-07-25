@@ -24,9 +24,9 @@ describe('Departures Reducer', () => {
         const departures: DepartureInterface[] = [
             {
                 time: '',
-                category: '',
-                direction: '',
-                track: ''
+                category: 'Sprinter',
+                direction: 'Hoorn',
+                track: '1a'
             }
         ];
         const action = DeparturesActions.getDeparturesSuccess({departures});
