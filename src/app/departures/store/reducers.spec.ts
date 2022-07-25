@@ -20,7 +20,7 @@ describe('Departures Reducer', () => {
         expect(result.station).toBe(station);
     });
 
-    test('should set isLoading as false and set stations', () => {
+    test('should set isLoading as false and set departures', () => {
         const departures: DepartureInterface[] = [
             {
                 time: '',
